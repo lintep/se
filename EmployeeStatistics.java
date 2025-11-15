@@ -1,3 +1,5 @@
+package temp;
+
 // کلاس آمار کارمند
 public class EmployeeStatistics {
     private Employee employee;

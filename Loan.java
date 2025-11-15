@@ -1,9 +1,11 @@
+package temp;
+
 import java.time.LocalDate;
 
 // کلاس امانت
 public class Loan {
     private static int nextId = 1;
-
+    
     private int id;
     private Student student;
     private Book book;
@@ -42,7 +44,7 @@ public class Loan {
         }
         return 0;
     }
-
+    
     // محاسبه مدت زمان امانت
     public long getLoanDuration() {
         LocalDate end = returned ? returnDate : LocalDate.now();
@@ -57,10 +59,16 @@ public class Loan {
     public LocalDate getStartDate() { return startDate; }
     public LocalDate getEndDate() { return endDate; }
     public LocalDate getReturnDate() { return returnDate; }
-    public void setReturnDate(LocalDate returnDate) {
-        this.returnDate = returnDate;
+    public void setReturnDate(LocalDate returnDate) { 
+        this.returnDate = returnDate; 
         this.returned = true;
         this.book.setAvailable(true);
     }
     public boolean isReturned() { return returned; }
+    
+    @Override
+    public String toString() {
+        return String.format("امانت #%d | دانشجو: %s | کتاب: %s | تاریخ برگشت: %s | وضعیت: %s", 
+            id, student.getName(), book.getTitle(), endDate, returned ? "تحویل داده شده" : "در دست امانت");
+    }
 }

@@ -1,3 +1,5 @@
+package temp;
+
 // کلاس مدیر
 public class Manager extends User {
     public Manager(String username, String password) {

@@ -1,3 +1,5 @@
+package temp;
+
 import java.time.LocalDate;
 
 // کلاس درخواست امانت
@@ -28,4 +30,10 @@ public class LoanRequest {
     public LocalDate getEndDate() { return endDate; }
     public boolean isApproved() { return approved; }
     public void setApproved(boolean approved) { this.approved = approved; }
+    
+    @Override
+    public String toString() {
+        return String.format("درخواست #%d | دانشجو: %s | کتاب: %s | تاریخ شروع: %s | وضعیت: %s", 
+            id, student.getName(), book.getTitle(), startDate, approved ? "تایید شده" : "در انتظار");
+    }
 }

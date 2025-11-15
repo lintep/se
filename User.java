@@ -1,3 +1,5 @@
+package temp;
+
 // کلاس پایه کاربر
 public abstract class User {
     protected String username;

@@ -1,3 +1,5 @@
+package temp;
+
 // کلاس کتاب
 public class Book {
     private String title;
@@ -29,4 +31,10 @@ public class Book {
     public boolean isAvailable() { return available; }
     public void setAvailable(boolean available) { this.available = available; }
     public Employee getRegisteredBy() { return registeredBy; }
+    
+    @Override
+    public String toString() {
+        return String.format("عنوان: %s | نویسنده: %s | سال نشر: %d | وضعیت: %s | ISBN: %s", 
+            title, author, publicationYear, available ? "موجود" : "امانت داده شده", isbn);
+    }
 }

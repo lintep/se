@@ -1,3 +1,5 @@
+package temp;
+
 // کلاس آمار مهمان
 public class GuestStatistics {
     private int totalStudents;

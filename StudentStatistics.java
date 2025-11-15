@@ -1,3 +1,5 @@
+package temp;
+
 import java.util.List;
 
 // کلاس آمار دانشجو
@@ -15,12 +17,21 @@ public class StudentStatistics {
     private void calculateStatistics() {
         List<Loan> loans = student.getLoanHistory();
         this.totalLoans = loans.size();
-        this.notReturnedCount = (int) loans.stream().filter(loan -> !loan.isReturned()).count();
-        this.delayedReturnsCount = (int) loans.stream().filter(Loan::isOverdue).count();
+        
+        this.notReturnedCount = 0;
+        this.delayedReturnsCount = 0;
+        
+        for (Loan loan : loans) {
+            if (!loan.isReturned()) {
+                notReturnedCount++;
+            }
+            if (loan.isOverdue()) {
+                delayedReturnsCount++;
+            }
+        }
     }
 
     // Getter methods
-    // 3-6 مشاهده گزارش تاریخچه امانات یک دانشجو به همراه اطلاعات آمارای شامل تعداد کل امانات، تعداد کل کتاب های تحویل داده نشد، تعداد کل امانت هایی که توسط دانشجو با تاخیر تحویل داده شده اند.
     public Student getStudent() { return student; }
     public int getTotalLoans() { return totalLoans; }
     public int getNotReturnedCount() { return notReturnedCount; }

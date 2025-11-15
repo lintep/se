@@ -1,3 +1,5 @@
+package temp;
+
 import java.util.List;
 
 // کلاس آمار امانت
@@ -13,21 +15,21 @@ public class LoanStatistics {
     private void calculateStatistics(LibrarySystem system) {
         List<LoanRequest> requests = system.getLoanRequests();
         List<Loan> loans = system.getLoans();
-
+        
         this.totalLoanRequests = requests.size();
         this.totalLoansApproved = loans.size();
-
+        
         // محاسبه میانگین مدت امانت بدون استفاده از ChronoUnit
         double totalDuration = 0;
         int returnedLoansCount = 0;
-
+        
         for (Loan loan : loans) {
             if (loan.isReturned()) {
                 totalDuration += loan.getLoanDuration();
                 returnedLoansCount++;
             }
         }
-
+        
         this.averageLoanDuration = returnedLoansCount > 0 ? totalDuration / returnedLoansCount : 0.0;
     }
 
