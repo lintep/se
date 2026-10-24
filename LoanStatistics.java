@@ -1,4 +1,4 @@
-package temp;
+package znulib;
 
 import java.util.List;
 
@@ -34,7 +34,7 @@ public class LoanStatistics {
     }
 
     // Getter methods
-    // 4-3 مشاهده اطلاعات آماری امانات کتاب شامل تعداد درخواست های امانت ثبت شده، تعداد کل امانت داده شده، میانگین تعداد روزهایی که کتاب به امانت برده شده
+    // 4-3 مشاهده اطلاعات آماری امانات کتاب شامل تعداد درخواست های امانت ثبت شده، تعداد کل امانت داده شده، میانگ[...]
     public int getTotalLoanRequests() { return totalLoanRequests; }
     public int getTotalLoansApproved() { return totalLoansApproved; }
     public double getAverageLoanDuration() { return averageLoanDuration; }

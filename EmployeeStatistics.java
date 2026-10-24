@@ -1,4 +1,4 @@
-package temp;
+package znulib;
 
 // کلاس آمار کارمند
 public class EmployeeStatistics {
@@ -15,7 +15,7 @@ public class EmployeeStatistics {
     }
 
     // Getter methods
-    // 4-2 مشاهده عملکرد کارمند شامل تعداد اطلاعات کتاب هایی که ثبت کرده، تعداد کل کتاب هایی که به امانت داده، تعداد کل کتاب هایی که تحویل گرفته
+    // 4-2 مشاهده عملکرد کارمند شامل تعداد اطلاعات کتاب هایی که ثبت کرده، تعداد کل کتاب هایی که به امانت داده، تع[...]
     public Employee getEmployee() { return employee; }
     public int getBooksRegistered() { return booksRegistered; }
     public int getBooksLoanedOut() { return booksLoanedOut; }

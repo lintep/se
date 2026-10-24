@@ -1,4 +1,4 @@
-package temp;
+package znulib;
 
 // کلاس کتاب
 public class Book {

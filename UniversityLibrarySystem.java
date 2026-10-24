@@ -1,4 +1,4 @@
-package temp;
+package znulib;
 
 // کلاس اصلی برای اجرای برنامه
 public class UniversityLibrarySystem {

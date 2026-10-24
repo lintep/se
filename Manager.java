@@ -1,4 +1,4 @@
-package temp;
+package znulib;
 
 // کلاس مدیر
 public class Manager extends User {

@@ -1,4 +1,4 @@
-package temp;
+package znulib;
 
 // کلاس پایه کاربر
 public abstract class User {

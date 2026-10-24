@@ -1,4 +1,4 @@
-package temp;
+package znulib;
 
 // کلاس آمار مهمان
 public class GuestStatistics {
@@ -15,7 +15,7 @@ public class GuestStatistics {
     }
 
     // Getter methods
-    // 2-3 مشاهده اطلاعات آماری ساده شامل تعداد کل دانشجویان، تعداد کل کتاب ها، تعداد کل امانت ها، تعداد آخرین کتاب هایی که در امانت هستند
+    // 2-3 مشاهده اطلاعات آماری ساده شامل تعداد کل دانشجویان، تعداد کل کتاب ها، تعداد کل امانت ها، تعداد آخرین ک�[...]
     public int getTotalStudents() { return totalStudents; }
     public int getTotalBooks() { return totalBooks; }
     public int getTotalLoans() { return totalLoans; }
