@@ -1,3 +1,6 @@
+package znulib.model;
+
+import znulib.service.LibrarySystem;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;

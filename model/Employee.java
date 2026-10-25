@@ -1,3 +1,7 @@
+package znulib.model;
+
+import znulib.statistics.StudentStatistics;
+import znulib.util.DateUtil;
 import java.time.LocalDate;
 
 // کلاس کارمند

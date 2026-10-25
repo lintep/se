@@ -1,3 +1,6 @@
+package znulib.model;
+
+import znulib.util.DateUtil;
 import java.time.LocalDate;
 
 // کلاس امانت

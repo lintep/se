@@ -1,3 +1,8 @@
+package znulib.statistics;
+
+import znulib.model.Loan;
+import znulib.model.LoanRequest;
+import znulib.service.LibrarySystem;
 import java.util.List;
 
 // کلاس آمار امانت

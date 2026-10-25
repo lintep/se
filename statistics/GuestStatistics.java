@@ -1,3 +1,7 @@
+package znulib.statistics;
+
+import znulib.service.LibrarySystem;
+
 // کلاس آمار مهمان
 public class GuestStatistics {
     private int totalStudents;

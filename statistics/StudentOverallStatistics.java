@@ -1,3 +1,8 @@
+package znulib.statistics;
+
+import znulib.model.Loan;
+import znulib.model.Student;
+import znulib.service.LibrarySystem;
 import java.util.ArrayList;
 import java.util.List;
 

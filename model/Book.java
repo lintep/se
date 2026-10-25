@@ -1,3 +1,5 @@
+package znulib.model;
+
 // کلاس کتاب
 public class Book {
     private String title;

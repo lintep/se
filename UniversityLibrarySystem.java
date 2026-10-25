@@ -1,3 +1,7 @@
+package znulib;
+
+import znulib.service.LibrarySystem;
+
 // کلاس اصلی برای اجرای برنامه
 public class UniversityLibrarySystem {
     public static void main(String[] args) {

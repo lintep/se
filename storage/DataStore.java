@@ -1,3 +1,12 @@
+package znulib.storage;
+
+import znulib.model.Book;
+import znulib.model.Employee;
+import znulib.model.Loan;
+import znulib.model.LoanRequest;
+import znulib.model.Manager;
+import znulib.model.Student;
+import znulib.service.LibrarySystem;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -28,12 +37,12 @@ public class DataStore {
     public static void save(LibrarySystem s) {
         List<String> out = new ArrayList<>();
         Manager m = s.getManager();
-        out.add(line("MANAGER", m.getUsername(), m.password));
+        out.add(line("MANAGER", m.getUsername(), m.getPassword()));
         for (Student st : s.getStudents()) {
-            out.add(line("STUDENT", st.getUsername(), st.password, st.getName(), st.getStudentId(), st.isActive()));
+            out.add(line("STUDENT", st.getUsername(), st.getPassword(), st.getName(), st.getStudentId(), st.isActive()));
         }
         for (Employee e : s.getEmployees()) {
-            out.add(line("EMPLOYEE", e.getUsername(), e.password, e.getName(), e.isActive(),
+            out.add(line("EMPLOYEE", e.getUsername(), e.getPassword(), e.getName(), e.isActive(),
                     e.getBooksRegistered(), e.getBooksLoanedOut(), e.getBooksReceived()));
         }
         List<Book> books = s.getBooks();

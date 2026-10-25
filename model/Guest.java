@@ -1,3 +1,7 @@
+package znulib.model;
+
+import znulib.service.LibrarySystem;
+import znulib.statistics.GuestStatistics;
 import java.util.List;
 
 // کلاس مهمان

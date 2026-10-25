@@ -1,3 +1,5 @@
+package znulib.model;
+
 import java.time.LocalDate;
 
 // کلاس درخواست امانت

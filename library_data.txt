@@ -1,8 +1,0 @@
-MANAGER	admin	admin123
-STUDENT	stu1	123	دانشجو یک	S001	true
-STUDENT	stu2	123	دانشجو دو	S002	true
-EMPLOYEE	emp1	123	کارمند نمونه	true	3	0	0
-BOOK	آموزش جاوا	نویسنده یک	2023	111-1111111111	emp1
-BOOK	پایگاه داده	نویسنده دو	2022	222-2222222222	emp1
-BOOK	هوش مصنوعی	نویسنده سه	2024	333-3333333333	emp1
-REQUEST	1	stu1	0	2026-10-25	2026-11-08	false

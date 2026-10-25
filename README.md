@@ -33,23 +33,33 @@
 
 ## ساختار پروژه
 
-| فایل | توضیح |
-|------|-------|
-| `UniversityLibrarySystem.java` | نقطه‌ی شروع برنامه (متد `main`) |
-| `LibrarySystem.java` | هسته‌ی سیستم؛ منوها، ورودی/خروجی و منطق اصلی |
-| `User.java` | کلاس پایه‌ی انتزاعی کاربران (ورود، تغییر رمز، فعال/غیرفعال) |
-| `Student.java` | دانشجو (ارث‌بری از `User`) |
-| `Employee.java` | کارمند (ارث‌بری از `User`) |
-| `Manager.java` | مدیر (ارث‌بری از `User`) |
-| `Guest.java` | مهمان |
-| `Book.java` | کتاب |
-| `LoanRequest.java` | درخواست امانت |
-| `Loan.java` | امانت (شامل محاسبه‌ی تاخیر و مدت امانت) |
-| `DateUtil.java` | توابع کمکی تاریخ |
-| `StudentStatistics.java`, `StudentOverallStatistics.java` | آمار دانشجو |
-| `EmployeeStatistics.java` | آمار کارمند |
-| `LoanStatistics.java` | آمار امانت‌ها |
-| `GuestStatistics.java` | آمار مهمان |
+پوشه‌ی ریشه‌ی پروژه همان پکیج `znulib` است (در `se.iml` مقدار `packagePrefix="znulib"` تنظیم شده) و کلاس‌ها در زیرپکیج‌ها دسته‌بندی شده‌اند:
+
+```
+se/
+├── UniversityLibrarySystem.java     znulib             نقطه‌ی شروع برنامه (main)
+├── model/                           znulib.model       موجودیت‌ها
+│   ├── User.java                    کلاس پایه‌ی انتزاعی کاربران
+│   ├── Student.java                 دانشجو
+│   ├── Employee.java                کارمند
+│   ├── Manager.java                 مدیر
+│   ├── Guest.java                   مهمان
+│   ├── Book.java                    کتاب
+│   ├── LoanRequest.java             درخواست امانت
+│   └── Loan.java                    امانت
+├── service/                         znulib.service     منطق اصلی و منوها
+│   └── LibrarySystem.java
+├── statistics/                      znulib.statistics  گزارش‌ها و آمار
+│   ├── StudentStatistics.java
+│   ├── StudentOverallStatistics.java
+│   ├── EmployeeStatistics.java
+│   ├── LoanStatistics.java
+│   └── GuestStatistics.java
+├── storage/                         znulib.storage     ذخیره‌سازی در فایل TAB
+│   └── DataStore.java
+└── util/                            znulib.util        ابزارهای کمکی
+    └── DateUtil.java
+```
 
 ## پیش‌نیازها
 
@@ -70,11 +80,14 @@ java -version
 در پوشه‌ی پروژه (جایی که فایل‌های `.java` قرار دارند):
 
 ```bash
-# کامپایل
-javac -encoding UTF-8 -d out *.java
+# کامپایل (همه‌ی فایل‌ها، شامل زیرپوشه‌ها)
+# لینوکس / مک:
+javac -encoding UTF-8 -d out $(find . -name "*.java")
+# ویندوز (PowerShell):
+#   javac -encoding UTF-8 -d out (Get-ChildItem -Recurse -Filter *.java).FullName
 
 # اجرا
-java -Dfile.encoding=UTF-8 -cp out UniversityLibrarySystem
+java -Dfile.encoding=UTF-8 -cp out znulib.UniversityLibrarySystem
 ```
 
 > در ویندوز اگر متن فارسی درست نمایش داده نشد، قبل از اجرا دستور `chcp 65001` را بزنید و از یک ترمینال با فونت مناسب (مثل Windows Terminal) استفاده کنید.
@@ -83,7 +96,7 @@ java -Dfile.encoding=UTF-8 -cp out UniversityLibrarySystem
 
 1. پوشه‌ی پروژه را با **File → Open** باز کنید.
 2. SDK پروژه را روی JDK 8 یا بالاتر بگذارید.
-3. فایل `UniversityLibrarySystem.java` را باز کنید و روی دکمه‌ی **Run** کنار متد `main` بزنید.
+3. فایل `UniversityLibrarySystem.java` (پکیج `znulib`) را باز کنید و روی دکمه‌ی **Run** کنار متد `main` بزنید.
 
 ## حساب‌ها و داده‌های نمونه
 

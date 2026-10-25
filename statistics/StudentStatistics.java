@@ -1,3 +1,7 @@
+package znulib.statistics;
+
+import znulib.model.Loan;
+import znulib.model.Student;
 import java.util.List;
 
 // کلاس آمار دانشجو

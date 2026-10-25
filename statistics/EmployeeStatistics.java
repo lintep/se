@@ -1,3 +1,7 @@
+package znulib.statistics;
+
+import znulib.model.Employee;
+
 // کلاس آمار کارمند
 public class EmployeeStatistics {
     private Employee employee;

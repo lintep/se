@@ -1,3 +1,5 @@
+package znulib.model;
+
 // کلاس پایه کاربر
 public abstract class User {
     protected String username;
@@ -22,6 +24,7 @@ public abstract class User {
 
     // Getter and Setter methods
     public String getUsername() { return username; }
+    public String getPassword() { return password; }
     public boolean isActive() { return active; }
     public void setActive(boolean active) { this.active = active; }
 }
