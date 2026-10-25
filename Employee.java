@@ -59,6 +59,13 @@ public class Employee extends User {
         student.setActive(false);
     }
 
+    // بازیابی شمارنده‌ها از فایل
+    public void restoreCounters(int registered, int loanedOut, int received) {
+        this.booksRegistered = registered;
+        this.booksLoanedOut = loanedOut;
+        this.booksReceived = received;
+    }
+
     // Getter methods for statistics
     public int getBooksRegistered() { return booksRegistered; }
     public int getBooksLoanedOut() { return booksLoanedOut; }

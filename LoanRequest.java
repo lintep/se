@@ -20,6 +20,17 @@ public class LoanRequest {
         this.approved = false;
     }
 
+    // سازنده‌ی بازیابی از فایل (با شماره‌ی مشخص)
+    public LoanRequest(int id, Student student, Book book, LocalDate startDate, LocalDate endDate, boolean approved) {
+        this.id = id;
+        this.student = student;
+        this.book = book;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.approved = approved;
+        if (id >= nextId) nextId = id + 1;
+    }
+
     // Getter methods
     public int getId() { return id; }
     public Student getStudent() { return student; }

@@ -25,6 +25,20 @@ public class Loan {
         student.addLoanToHistory(this);
     }
 
+    // سازنده‌ی بازیابی از فایل (با شماره‌ی مشخص)
+    public Loan(int id, Student student, Book book, Employee approvedBy, LocalDate startDate, LocalDate endDate) {
+        this.id = id;
+        this.student = student;
+        this.book = book;
+        this.approvedBy = approvedBy;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.returned = false;
+        this.book.setAvailable(false);
+        student.addLoanToHistory(this);
+        if (id >= nextId) nextId = id + 1;
+    }
+
     public boolean isOverdue() {
         if (returned) {
             return returnDate.isAfter(endDate);

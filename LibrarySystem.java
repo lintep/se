@@ -25,7 +25,12 @@ public class LibrarySystem {
         this.manager = new Manager("admin", "admin123");
         
         // ایجاد داده‌های نمونه
-        initializeSampleData();
+        if (DataStore.exists()) {
+            DataStore.load(this);
+        } else {
+            initializeSampleData();
+            DataStore.save(this);
+        }
     }
 
     private void initializeSampleData() {
@@ -52,6 +57,7 @@ public class LibrarySystem {
     // متدهای اصلی سیستم
     public void start() {
         while (true) {
+            DataStore.save(this);
             showMainMenu();
             int choice = getIntInput("لطفاً گزینه مورد نظر را انتخاب کنید: ");
             
@@ -104,6 +110,7 @@ public class LibrarySystem {
 
     private void studentMenu(Student student) {
         while (true) {
+            DataStore.save(this);
             System.out.println("\n--- منوی دانشجو ---");
             System.out.println("1. جستجوی کتاب");
             System.out.println("2. درخواست امانت کتاب");
@@ -151,6 +158,7 @@ public class LibrarySystem {
 
     private void employeeMenu(Employee employee) {
         while (true) {
+            DataStore.save(this);
             System.out.println("\n--- منوی کارمند ---");
             System.out.println("1. ثبت کتاب جدید");
             System.out.println("2. ویرایش اطلاعات کتاب");
@@ -372,6 +380,7 @@ public class LibrarySystem {
 
     private void managerMenu() {
         while (true) {
+            DataStore.save(this);
             System.out.println("\n--- منوی مدیر ---");
             System.out.println("1. تعریف کارمند جدید");
             System.out.println("2. مشاهده عملکرد کارمندان");
@@ -721,6 +730,9 @@ public class LibrarySystem {
     
     public void addEmployee(Employee employee) { employees.add(employee); }
     public void addBook(Book book) { books.add(book); }
+    public void addStudent(Student student) { students.add(student); }
+    public void addLoan(Loan loan) { loans.add(loan); }
+    public List<Employee> getEmployees() { return new ArrayList<>(employees); }
 
     // متدهای کمکی برای ورودی
     private String getStringInput(String prompt) {
