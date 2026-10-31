@@ -33,74 +33,77 @@
 
 ## ساختار پروژه
 
-پوشه‌ی ریشه‌ی پروژه همان پکیج `znulib` است (در `se.iml` مقدار `packagePrefix="znulib"` تنظیم شده) و کلاس‌ها در زیرپکیج‌ها دسته‌بندی شده‌اند:
+پروژه یک پروژه‌ی **Maven** با ساختار استاندارد است (پکیج پایه: `znulib`):
 
 ```
 se/
-├── UniversityLibrarySystem.java     znulib             نقطه‌ی شروع برنامه (main)
-├── model/                           znulib.model       موجودیت‌ها
-│   ├── User.java                    کلاس پایه‌ی انتزاعی کاربران
-│   ├── Student.java                 دانشجو
-│   ├── Employee.java                کارمند
-│   ├── Manager.java                 مدیر
-│   ├── Guest.java                   مهمان
-│   ├── Book.java                    کتاب
-│   ├── LoanRequest.java             درخواست امانت
-│   └── Loan.java                    امانت
-├── service/                         znulib.service     منطق اصلی و منوها
-│   └── LibrarySystem.java
-├── statistics/                      znulib.statistics  گزارش‌ها و آمار
-│   ├── StudentStatistics.java
-│   ├── StudentOverallStatistics.java
-│   ├── EmployeeStatistics.java
-│   ├── LoanStatistics.java
-│   └── GuestStatistics.java
-├── storage/                         znulib.storage     ذخیره‌سازی در SQLite
-│   └── DataStore.java
-└── util/                            znulib.util        ابزارهای کمکی
-    └── DateUtil.java
+├── pom.xml                                   تنظیمات Maven و وابستگی‌ها
+├── README.md
+└── src/main/java/znulib/
+    ├── UniversityLibrarySystem.java          نقطه‌ی شروع برنامه (main)
+    ├── model/                                موجودیت‌ها
+    │   ├── User.java                         کلاس پایه‌ی انتزاعی کاربران
+    │   ├── Student.java                      دانشجو
+    │   ├── Employee.java                     کارمند
+    │   ├── Manager.java                      مدیر
+    │   ├── Guest.java                        مهمان
+    │   ├── Book.java                         کتاب
+    │   ├── LoanRequest.java                  درخواست امانت
+    │   └── Loan.java                         امانت
+    ├── service/
+    │   └── LibrarySystem.java                منطق اصلی و منوها
+    ├── statistics/                           گزارش‌ها و آمار
+    │   ├── StudentStatistics.java
+    │   ├── StudentOverallStatistics.java
+    │   ├── EmployeeStatistics.java
+    │   ├── LoanStatistics.java
+    │   └── GuestStatistics.java
+    ├── storage/
+    │   └── DataStore.java                    ذخیره‌سازی در SQLite
+    └── util/
+        └── DateUtil.java                     ابزارهای کمکی
 ```
+
+درایور SQLite (`org.xerial:sqlite-jdbc:3.41.2.2`) به‌عنوان وابستگی در `pom.xml` تعریف شده و Maven آن را خودکار از Maven Central دانلود می‌کند؛ نیازی به پوشه‌ی `libs` یا jar محلی نیست.
 
 ## پیش‌نیازها
 
-- **JDK نسخه ۸ یا بالاتر** (پروژه برای JDK 1.8 تنظیم شده است)
-- فایل **`libs/sqlite-jdbc-3.41.2.2.jar`** (درایور JDBC برای SQLite) در پوشه‌ی `libs` در ریشه‌ی پروژه
+- **JDK نسخه ۸ یا بالاتر**
+- **Apache Maven نسخه ۳.۶ یا بالاتر** (یا استفاده از Maven داخلی IntelliJ IDEA)
+- دسترسی به اینترنت در اولین build (برای دانلود وابستگی‌ها)
 - ترمینالی که از **UTF-8** پشتیبانی کند (منوها و پیام‌ها فارسی هستند)
 
-برای بررسی نصب بودن جاوا:
+بررسی نصب بودن ابزارها:
 
 ```bash
-javac -version
 java -version
+mvn -version
 ```
 
 ## نحوه‌ی اجرا
 
-### ۱) از طریق خط فرمان
-
-در پوشه‌ی پروژه (جایی که فایل‌های `.java` قرار دارند):
+### ۱) ساخت jar اجرایی (پیشنهادی)
 
 ```bash
-# کامپایل (همه‌ی فایل‌ها، شامل زیرپوشه‌ها)
-# لینوکس / مک:
-javac -encoding UTF-8 -d out $(find . -name "*.java" -not -path "./libs/*")
-# ویندوز (PowerShell):
-#   javac -encoding UTF-8 -d out (Get-ChildItem -Recurse -Filter *.java).FullName
-
-# اجرا
-# لینوکس / مک:
-java -Dfile.encoding=UTF-8 -cp "out:libs/sqlite-jdbc-3.41.2.2.jar" znulib.UniversityLibrarySystem
-# ویندوز (به‌جای : از ; استفاده می‌شود):
-#   java -Dfile.encoding=UTF-8 -cp "out;libs\sqlite-jdbc-3.41.2.2.jar" znulib.UniversityLibrarySystem
+mvn clean package
+java -Dfile.encoding=UTF-8 -jar target/library-system.jar
 ```
 
-> در ویندوز اگر متن فارسی درست نمایش داده نشد، قبل از اجرا دستور `chcp 65001` را بزنید و از یک ترمینال با فونت مناسب (مثل Windows Terminal) استفاده کنید.
+این jar شامل درایور SQLite هم هست و روی هر سیستمی که جاوا دارد اجرا می‌شود.
 
-### ۲) از طریق IntelliJ IDEA
+### ۲) اجرای مستقیم با Maven
 
-1. پوشه‌ی پروژه را با **File → Open** باز کنید.
-2. SDK پروژه را روی JDK 8 یا بالاتر بگذارید. (jar داخل `libs` در فایل `se.iml` به‌عنوان کتابخانه‌ی ماژول تعریف شده است؛ اگر نشناخت، روی آن راست‌کلیک و **Add as Library** بزنید.)
-3. فایل `UniversityLibrarySystem.java` (پکیج `znulib`) را باز کنید و روی دکمه‌ی **Run** کنار متد `main` بزنید.
+```bash
+mvn compile exec:java
+```
+
+> اگر متن فارسی درست نمایش داده نشد: در ویندوز قبل از اجرا `chcp 65001` را بزنید و از Windows Terminal استفاده کنید؛ برای حالت `exec:java` مقدار `MAVEN_OPTS=-Dfile.encoding=UTF-8` را هم تنظیم کنید.
+
+### ۳) از طریق IntelliJ IDEA
+
+1. از **File → Open** فایل `pom.xml` را انتخاب کنید و گزینه‌ی *Open as Project* را بزنید.
+2. صبر کنید تا Maven وابستگی‌ها را دانلود کند.
+3. فایل `UniversityLibrarySystem.java` را باز کنید و روی دکمه‌ی **Run** کنار متد `main` بزنید.
 
 ## حساب‌ها و داده‌های نمونه
 
@@ -121,7 +124,7 @@ java -Dfile.encoding=UTF-8 -cp "out:libs/sqlite-jdbc-3.41.2.2.jar" znulib.Univer
 - جدول‌ها: `manager`، `students`، `employees`، `books`، `loan_requests`، `loans` (با کلید خارجی بین آن‌ها).
 - در اولین اجرا (وقتی پایگاه داده خالی است) داده‌های نمونه ساخته و ذخیره می‌شوند؛ از اجرای بعدی اطلاعات از پایگاه داده خوانده می‌شود.
 - ذخیره‌سازی در ابتدای هر بار نمایش منوها و در قالب یک تراکنش انجام می‌شود (کل وضعیت سیستم بازنویسی می‌شود)، پس اگر خطایی رخ دهد داده‌ی قبلی سالم می‌ماند.
-- اگر jar درایور در classpath نباشد، برنامه با پیام `درایور SQLite پیدا نشد` متوقف می‌شود.
+- اگر درایور در classpath نباشد (مثلاً کلاس‌ها بدون Maven اجرا شوند)، برنامه با پیام `درایور SQLite پیدا نشد` متوقف می‌شود.
 
 ## نمونه‌ی سناریوی استفاده
 

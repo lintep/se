@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-// ذخیره و بازیابی اطلاعات در پایگاه داده SQLite (نیازمند libs/sqlite-jdbc-3.41.2.2.jar)
+// ذخیره و بازیابی اطلاعات در پایگاه داده SQLite (وابستگی org.xerial:sqlite-jdbc در pom.xml)
 public class DataStore {
     private static final String URL = "jdbc:sqlite:library.db";
 
@@ -29,7 +29,7 @@ public class DataStore {
             Class.forName("org.sqlite.JDBC");
         } catch (ClassNotFoundException e) {
             throw new IllegalStateException(
-                "درایور SQLite پیدا نشد؛ فایل libs/sqlite-jdbc-3.41.2.2.jar را به classpath اضافه کنید.", e);
+                "درایور SQLite پیدا نشد؛ برنامه را با Maven یا jar ساخته‌شده (java -jar target/library-system.jar) اجرا کنید.", e);
         }
         Connection c = DriverManager.getConnection(URL);
         try (Statement st = c.createStatement()) {
